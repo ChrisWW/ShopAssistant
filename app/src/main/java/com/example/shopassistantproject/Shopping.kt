@@ -4,8 +4,9 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-class Shopping(
+data class Shopping(
     @PrimaryKey(autoGenerate = true)
-    var product: Long,
+    var id: Long = 0,
+    var product: String,
     var quantity: String,
     var bought: Boolean)

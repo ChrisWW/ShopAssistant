@@ -21,7 +21,8 @@ class MyAdapter(val viewModel: ShoppingViewModel) : RecyclerView.Adapter<MyAdapt
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
         //Check it why toString if its text..
-        holder.binding.txProduct.text = shoppingList[position].product.toString()
+        holder.binding.id.text = shoppingList[position].id.toString()
+        holder.binding.txProduct.text = shoppingList[position].product
         holder.binding.txQuantity.text = shoppingList[position].quantity
         holder.binding.tvCb.isChecked = shoppingList[position].bought
         holder.binding.root.setOnClickListener {

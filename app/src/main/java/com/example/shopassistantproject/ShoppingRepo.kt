@@ -4,11 +4,11 @@ class ShoppingRepo(private val shoppingDao: ShoppingDao) {
 
     fun getShopping() = shoppingDao.getShopping()
 
-    fun add(shopping: Shopping) = shoppingDao.add(Shopping)
+    fun add(shopping: Shopping) = shoppingDao.add(shopping)
 
-    fun modify(shopping: Shopping) = shoppingDao.modify(Shopping)
+    fun modify(shopping: Shopping) = shoppingDao.modify(shopping)
 
-    fun delete(shopping: Shopping) = shoppingDao.delete(Shopping)
+    fun delete(shopping: Shopping) = shoppingDao.delete(shopping)
 
-    fun deleteAll() = shoppingDao.deleteAll()
+    fun removeAll() = shoppingDao.removeAll()
 }

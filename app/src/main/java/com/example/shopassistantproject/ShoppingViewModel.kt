@@ -20,5 +20,5 @@ class ShoppingViewModel(application: Application) : AndroidViewModel(application
 
     fun remove(shopping: Shopping) = repo.delete(shopping)
 
-    fun removeAll() = repo.deleteAll()
+    fun removeAll() = repo.removeAll()
 }

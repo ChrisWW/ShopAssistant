@@ -5,9 +5,10 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatDelegate
 import com.example.shopassistantproject.databinding.ActivityMainBinding
-
-
+import com.example.shopassistantproject.databinding.ActivityOptionsBinding
+import kotlinx.android.synthetic.main.activity_options.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -15,12 +16,13 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var sp: SharedPreferences
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        sp = getPreferences(Context.MODE_PRIVATE)
+        sp = getSharedPreferences("shared", MODE_PRIVATE)
 
         binding.bt1.setOnClickListener {
             val intent1 = Intent(this, OptionsActivity::class.java)
@@ -30,8 +32,31 @@ class MainActivity : AppCompatActivity() {
             val intent2 = Intent(this, ProductListActivity::class.java)
             startActivity(intent2)
         }
+    }
+//
 
+    override fun onStart() {
+        super.onStart()
+        val editor = sp.edit()
 
+        if (sp.getBoolean("dark", true)) {
+            AppCompatDelegate.setDefaultNightMode(2.toInt())
+        }
+
+        else {
+            AppCompatDelegate.setDefaultNightMode(1.toInt())
+
+        }
 
     }
+
+        //
+
+
+    //
+
+
+
+
+
 }

@@ -30,8 +30,8 @@ class MyAdapter(val viewModel: ShoppingViewModel) : RecyclerView.Adapter<MyAdapt
             notifyDataSetChanged()
         }
         holder.binding.tvCb.setOnClickListener {
-            // Change it what is in the base, actually
-            shoppingList[position].bought
+            // Change it what is in the base, actually, click, unclicked
+            shoppingList[position].bought = holder.binding.tvCb.isChecked
             viewModel.modify(shoppingList[position])
             notifyDataSetChanged()
         }

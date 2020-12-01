@@ -3,4 +3,8 @@
     <string name="welcome_to_your_shopassistant">Welcome to Your ShopAssistant</string>
     <string name="options">Options</string>
     <string name="shop_assistant">Shop Assistant</string>
+    <string name="draculacolor">DraculaColor</string>
+    <string name="off_on">Off/On</string>
+    <string name="bigsize">BigSize</string>
+    <string name="add_delete">Add/Delete</string>
 </resources>

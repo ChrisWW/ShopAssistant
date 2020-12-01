@@ -9,7 +9,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/widthlist"
         android:layout_weight="1"
-        android:text="@string/textview" />
+        android:text="@string/textview"
+        android:visibility="gone"/>
+
 
     <TextView
         android:id="@+id/tx_product"
@@ -33,6 +35,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/widthlist"
         android:layout_weight="1"
-        android:text="@string/checkbox" />
+        android:text="Bought" />
 
 </LinearLayout>

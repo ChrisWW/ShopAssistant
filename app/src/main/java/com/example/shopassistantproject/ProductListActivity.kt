@@ -39,8 +39,7 @@ class ProductListActivity : AppCompatActivity() {
 
         // rewrite names of arguments, adding to DB
         binding.btl1.setOnClickListener {
-            viewModel.add(
-                Shopping(
+            viewModel.add(Shopping(
                     product = binding.edl1.text.toString(),
                     quantity = binding.edl2.text.toString(),
                     bought = binding.ch1.isChecked

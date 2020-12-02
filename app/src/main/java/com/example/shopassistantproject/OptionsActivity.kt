@@ -17,12 +17,6 @@ class OptionsActivity : AppCompatActivity() {
     private lateinit var sp: SharedPreferences
 
 
-    //
-
-
-    //editor
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -32,8 +26,6 @@ class OptionsActivity : AppCompatActivity() {
 
         sp = getSharedPreferences("shared", MODE_PRIVATE)
         val editor = sp.edit()
-        val bindingA = ActivityMainBinding.inflate(layoutInflater)
-        val bindingP = ActivityProductListBinding.inflate(layoutInflater)
 
         binding.s1.setOnCheckedChangeListener { buttonView, isChecked ->
             if (isChecked == true) {
@@ -59,14 +51,7 @@ class OptionsActivity : AppCompatActivity() {
                     txo2.textSize = bigdata.toFloat()
                     s1.textSize = bigdata.toFloat()
                     s2.textSize = bigdata.toFloat()
-                bindingA.bt1.textSize = bigdata.toFloat()
-                bindingA.bt2.textSize = bigdata.toFloat()
-                bindingA.tx1.textSize = bigdata.toFloat()
 
-                bindingP.btl1.textSize = bigdata.toFloat()
-                bindingP.ch1.textSize = bigdata.toFloat()
-                bindingP.edl2.textSize = bigdata.toFloat()
-                bindingP.edl1.textSize = bigdata.toFloat()
 
                 }
             else {
@@ -75,14 +60,7 @@ class OptionsActivity : AppCompatActivity() {
                     txo2.textSize = smalldata.toFloat()
                     s1.textSize = smalldata.toFloat()
                     s2.textSize = smalldata.toFloat()
-                bindingA.bt1.textSize = smalldata.toFloat()
-                bindingA.bt2.textSize = smalldata.toFloat()
-                bindingA.tx1.textSize = smalldata.toFloat()
 
-                bindingP.btl1.textSize = smalldata.toFloat()
-                bindingP.ch1.textSize = smalldata.toFloat()
-                bindingP.edl2.textSize = smalldata.toFloat()
-                bindingP.edl1.textSize = smalldata.toFloat()
                 }
 
             }
@@ -93,8 +71,6 @@ class OptionsActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        val bindingA = ActivityMainBinding.inflate(layoutInflater)
-        val bindingP = ActivityProductListBinding.inflate(layoutInflater)
         val editor = sp.edit()
 
         if (sp.getBoolean("dark", true)) {
@@ -119,14 +95,7 @@ class OptionsActivity : AppCompatActivity() {
             txo2.textSize = bigdata.toFloat()
             s1.textSize = bigdata.toFloat()
             s2.textSize = bigdata.toFloat()
-            bindingA.bt1.textSize = bigdata.toFloat()
-            bindingA.bt2.textSize = bigdata.toFloat()
-            bindingA.tx1.textSize = bigdata.toFloat()
 
-            bindingP.btl1.textSize = bigdata.toFloat()
-            bindingP.ch1.textSize = bigdata.toFloat()
-            bindingP.edl2.textSize = bigdata.toFloat()
-            bindingP.edl1.textSize = bigdata.toFloat()
             editor.apply()
         }
         else {
@@ -137,22 +106,12 @@ class OptionsActivity : AppCompatActivity() {
             txo2.textSize = smalldata.toFloat()
             s1.textSize = smalldata.toFloat()
             s2.textSize = smalldata.toFloat()
-            bindingA.bt1.textSize = smalldata.toFloat()
-            bindingA.bt2.textSize = smalldata.toFloat()
-            bindingA.tx1.textSize = smalldata.toFloat()
 
-            bindingP.btl1.textSize = smalldata.toFloat()
-            bindingP.ch1.textSize = smalldata.toFloat()
-            bindingP.edl2.textSize = smalldata.toFloat()
-            bindingP.edl1.textSize = smalldata.toFloat()
             editor.apply()
         }
 
 
         }
-
-
-
 
 
     override fun onStop() {

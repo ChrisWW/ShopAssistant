@@ -59,14 +59,6 @@ class MainActivity : AppCompatActivity() {
             binding2.txo2.textSize = bigdata.toFloat()
             binding2.s1.textSize = bigdata.toFloat()
             binding2.s2.textSize = bigdata.toFloat()
-            binding.bt1.textSize = bigdata.toFloat()
-            binding.bt2.textSize = bigdata.toFloat()
-            binding.tx1.textSize = bigdata.toFloat()
-
-            bindingP.btl1.textSize = bigdata.toFloat()
-            bindingP.ch1.textSize = bigdata.toFloat()
-            bindingP.edl2.textSize = bigdata.toFloat()
-            bindingP.edl1.textSize = bigdata.toFloat()
 
         }
         else {
@@ -76,26 +68,11 @@ class MainActivity : AppCompatActivity() {
             binding2.txo2.textSize = smalldata.toFloat()
             binding2.s1.textSize = smalldata.toFloat()
             binding2.s2.textSize = smalldata.toFloat()
-            binding.bt1.textSize = smalldata.toFloat()
-            binding.bt2.textSize = smalldata.toFloat()
-            binding.tx1.textSize = smalldata.toFloat()
-
-            bindingP.btl1.textSize = smalldata.toFloat()
-            bindingP.ch1.textSize = smalldata.toFloat()
-            bindingP.edl2.textSize = smalldata.toFloat()
-            bindingP.edl1.textSize = smalldata.toFloat()
 
         }
 
 
     }
-
-        //
-
-
-    //
-
-
 
 
 

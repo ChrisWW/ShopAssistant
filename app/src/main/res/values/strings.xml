@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">ShopAssistantProject</string>
-    <string name="welcome_to_your_shopassistant">Welcome to Your ShopAssistant</string>
+    <string name="welcome_to_your_shopassistant">Your ShopAssistant</string>
     <string name="options">Options</string>
     <string name="shop_assistant">Shop Assistant</string>
     <string name="draculacolor">DraculaColor</string>
@@ -12,5 +12,7 @@
     <string name="bought">Bought</string>
     <string name="checkbox">CheckBox</string>
     <string name="textview">TextView</string>
+    <string name="big">22</string>
+    <string name="small">22</string>
 
 </resources>

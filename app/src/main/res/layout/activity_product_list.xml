@@ -21,10 +21,10 @@
 
     <Button
         android:id="@+id/btl1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="142dp"
-        android:layout_marginEnd="143dp"
+        android:layout_width="166dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="110dp"
+        android:layout_marginEnd="110dp"
         android:layout_marginBottom="48dp"
         android:text="@string/add_delete"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -65,8 +65,8 @@
 
     <CheckBox
         android:id="@+id/ch1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="126dp"
+        android:layout_height="59dp"
         android:layout_marginStart="160dp"
         android:layout_marginEnd="170dp"
         android:layout_marginBottom="11dp"

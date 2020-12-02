@@ -1,6 +1,5 @@
 package com.example.shopassistantproject
 
-import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
@@ -8,10 +7,14 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatDelegate
 import com.example.shopassistantproject.databinding.ActivityMainBinding
 import com.example.shopassistantproject.databinding.ActivityOptionsBinding
+import com.example.shopassistantproject.databinding.ActivityProductListBinding
 import kotlinx.android.synthetic.main.activity_options.*
 
 
 class MainActivity : AppCompatActivity() {
+
+
+
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var sp: SharedPreferences
@@ -37,6 +40,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
+        val binding2 = ActivityOptionsBinding.inflate(layoutInflater)
+        val bindingP = ActivityProductListBinding.inflate(layoutInflater)
         val editor = sp.edit()
 
         if (sp.getBoolean("dark", true)) {
@@ -47,6 +52,41 @@ class MainActivity : AppCompatActivity() {
             AppCompatDelegate.setDefaultNightMode(1.toInt())
 
         }
+
+        if (sp.getBoolean("big", true)) {
+
+            binding2.txo1.textSize = bigdata.toFloat()
+            binding2.txo2.textSize = bigdata.toFloat()
+            binding2.s1.textSize = bigdata.toFloat()
+            binding2.s2.textSize = bigdata.toFloat()
+            binding.bt1.textSize = bigdata.toFloat()
+            binding.bt2.textSize = bigdata.toFloat()
+            binding.tx1.textSize = bigdata.toFloat()
+
+            bindingP.btl1.textSize = bigdata.toFloat()
+            bindingP.ch1.textSize = bigdata.toFloat()
+            bindingP.edl2.textSize = bigdata.toFloat()
+            bindingP.edl1.textSize = bigdata.toFloat()
+
+        }
+        else {
+
+
+            binding2.txo1.textSize = smalldata.toFloat()
+            binding2.txo2.textSize = smalldata.toFloat()
+            binding2.s1.textSize = smalldata.toFloat()
+            binding2.s2.textSize = smalldata.toFloat()
+            binding.bt1.textSize = smalldata.toFloat()
+            binding.bt2.textSize = smalldata.toFloat()
+            binding.tx1.textSize = smalldata.toFloat()
+
+            bindingP.btl1.textSize = smalldata.toFloat()
+            bindingP.ch1.textSize = smalldata.toFloat()
+            bindingP.edl2.textSize = smalldata.toFloat()
+            bindingP.edl1.textSize = smalldata.toFloat()
+
+        }
+
 
     }
 

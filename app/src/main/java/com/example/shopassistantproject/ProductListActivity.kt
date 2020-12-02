@@ -6,11 +6,16 @@ import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.shopassistantproject.databinding.ActivityMainBinding
+import com.example.shopassistantproject.databinding.ActivityOptionsBinding
 import com.example.shopassistantproject.databinding.ActivityProductListBinding
+import kotlinx.android.synthetic.main.activity_options.*
+import kotlinx.android.synthetic.main.activity_product_list.*
 import kotlinx.android.synthetic.main.activity_product_list.view.*
 
 class ProductListActivity : AppCompatActivity() {
 
+    private lateinit var sp: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,4 +61,10 @@ class ProductListActivity : AppCompatActivity() {
         }
 
     }
+
+
+
+
+
+
 }

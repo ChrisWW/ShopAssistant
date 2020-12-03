@@ -44,6 +44,7 @@ class MainActivity : AppCompatActivity() {
         val bindingP = ActivityProductListBinding.inflate(layoutInflater)
         val editor = sp.edit()
 
+
         if (sp.getBoolean("dark", true)) {
             AppCompatDelegate.setDefaultNightMode(2.toInt())
         }

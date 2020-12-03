@@ -26,7 +26,7 @@ class ProductListActivity : AppCompatActivity() {
         val viewModel = ShoppingViewModel(application)
         val adapter = MyAdapter(viewModel)
 
-        // If some changes in DB, it will go for method seyShoppingList in Adapter and change data in DB
+        // If some changes in DB, it will go for method setShoppingList in Adapter and change data in DB
         viewModel.allShopping.observe(this, Observer {
             it.let {
                 adapter.setShoppingList(it)
@@ -47,6 +47,7 @@ class ProductListActivity : AppCompatActivity() {
             viewModel.add(Shopping(
                     product = binding.edl1.text.toString(),
                     quantity = binding.edl2.text.toString(),
+                    price = binding.edl3.text.toString(),
                     bought = binding.ch1.isChecked
                 )
             )

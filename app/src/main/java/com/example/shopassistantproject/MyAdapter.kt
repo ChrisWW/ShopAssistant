@@ -24,6 +24,7 @@ class MyAdapter(val viewModel: ShoppingViewModel) : RecyclerView.Adapter<MyAdapt
         holder.binding.id.text = shoppingList[position].id.toString()
         holder.binding.txProduct.text = shoppingList[position].product
         holder.binding.txQuantity.text = shoppingList[position].quantity
+        holder.binding.txPrice.text = shoppingList[position].price.toString()+" $"
         holder.binding.tvCb.isChecked = shoppingList[position].bought
         holder.binding.root.setOnClickListener {
             viewModel.remove(shoppingList[position])

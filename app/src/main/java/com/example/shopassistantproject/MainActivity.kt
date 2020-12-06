@@ -13,9 +13,6 @@ import kotlinx.android.synthetic.main.activity_options.*
 
 class MainActivity : AppCompatActivity() {
 
-
-
-
     private lateinit var binding: ActivityMainBinding
     private lateinit var sp: SharedPreferences
 
@@ -41,8 +38,6 @@ class MainActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         val binding2 = ActivityOptionsBinding.inflate(layoutInflater)
-        val bindingP = ActivityProductListBinding.inflate(layoutInflater)
-        val editor = sp.edit()
 
 
         if (sp.getBoolean("dark", true)) {

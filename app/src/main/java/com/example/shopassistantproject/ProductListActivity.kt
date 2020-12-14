@@ -1,5 +1,7 @@
 package com.example.shopassistantproject
 
+import android.content.ComponentName
+import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -45,12 +47,19 @@ class ProductListActivity : AppCompatActivity() {
         // rewrite names of arguments, adding to DB
         binding.btl1.setOnClickListener {
             viewModel.add(Shopping(
-                    product = binding.edl1.text.toString(),
-                    quantity = binding.edl2.text.toString(),
-                    price = binding.edl3.text.toString(),
-                    bought = binding.ch1.isChecked
-                )
+                product = binding.edl1.text.toString(),
+                quantity = binding.edl2.text.toString(),
+                price = binding.edl3.text.toString(),
+                bought = binding.ch1.isChecked,
+
             )
+            )
+            val broadcast = Intent(getString(R.string.addProduct))
+            broadcast.component = ComponentName(this, ProductReceiver::class.java)
+            //odnoszenie do nowej apki// broadcast.compoent = ComponentName("com.example.nazwaApki", "com.example,nazaApki.Nazwareceivera")
+
+            broadcast.putExtra("produkt", binding.edl1.text.toString())
+            sendBroadcast(broadcast)
         }
 
 

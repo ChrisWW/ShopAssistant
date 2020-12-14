@@ -15,6 +15,10 @@
     <string name="small">22</string>
     <string name="price">Price</string>
     <string name="textview">TextView</string>
+    <string name="addProduct">com.example.shopassistantproject.ADD_PRODUCT</string>
+    <string name="channelID">channelP</string>
+    <string name="channelName">Channel Product</string>
+
 
 
 </resources>

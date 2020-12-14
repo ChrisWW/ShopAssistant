@@ -11,8 +11,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ShopAssistantProject"
         tools:ignore="ExtraText">
-        <activity android:name=".ProductListActivity"
-            android:parentActivityName=".MainActivity"/>
+        <receiver
+            android:name=".ProductReceiver"
+            android:enabled="true"
+            android:exported="false"></receiver>
+
+        <activity
+            android:name=".ProductListActivity"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".OptionsActivity"
             android:parentActivityName=".MainActivity" />

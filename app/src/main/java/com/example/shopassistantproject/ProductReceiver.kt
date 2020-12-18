@@ -14,7 +14,6 @@ import java.util.Date.from
 class ProductReceiver : BroadcastReceiver() {
 
     private var id = 0
-
     override fun onReceive(context: Context, intent: Intent) {
         if(intent.action == context.getString(R.string.addProduct)){
             createChannel(context)

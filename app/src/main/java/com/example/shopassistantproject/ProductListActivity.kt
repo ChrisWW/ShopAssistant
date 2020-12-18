@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -55,13 +56,22 @@ class ProductListActivity : AppCompatActivity() {
             )
             )
             val broadcast = Intent(getString(R.string.addProduct))
-            broadcast.component = ComponentName(this, ProductReceiver::class.java)
-            //odnoszenie do nowej apki// broadcast.compoent = ComponentName("com.example.nazwaApki", "com.example,nazaApki.Nazwareceivera")
-
+            // broadcast.component = ComponentName(this, ProductReceiver::class.java)
+            broadcast.component = ComponentName("com.example.secondapplictionshop", "com.example.secondapplictionshop.ProductReceiver")
             broadcast.putExtra("produkt", binding.edl1.text.toString())
             sendBroadcast(broadcast)
         }
+        binding.btl2.setOnClickListener {
+            viewModel.modify(Shopping(id = adapter.POZYCJA.toLong(),
+                product = binding.edl1.text.toString(),
+                quantity = binding.edl2.text.toString(),
+                price = binding.edl3.text.toString(),
+                bought = binding.ch1.isChecked,
+            ))
 
+            val toast = Toast.makeText(this, adapter.POZYCJA.toString(), Toast.LENGTH_SHORT)
+                toast.show()
+        }
 
         binding.btl1.setOnLongClickListener {
 

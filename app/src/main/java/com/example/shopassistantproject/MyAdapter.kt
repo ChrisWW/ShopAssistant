@@ -7,6 +7,8 @@ import com.example.shopassistantproject.databinding.ListElementBinding
 
 class MyAdapter(val viewModel: ShoppingViewModel) : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
 
+    public var POZYCJA: String = ""
+
     private var shoppingList = emptyList<Shopping>()
 
     class MyViewHolder(val binding: ListElementBinding) : RecyclerView.ViewHolder(binding.root)
@@ -21,6 +23,7 @@ class MyAdapter(val viewModel: ShoppingViewModel) : RecyclerView.Adapter<MyAdapt
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
         //Check it why toString if its text..
+
         holder.binding.id.text = shoppingList[position].id.toString()
         holder.binding.txProduct.text = shoppingList[position].product
         holder.binding.txQuantity.text = shoppingList[position].quantity
@@ -35,6 +38,11 @@ class MyAdapter(val viewModel: ShoppingViewModel) : RecyclerView.Adapter<MyAdapt
             shoppingList[position].bought = holder.binding.tvCb.isChecked
             viewModel.modify(shoppingList[position])
             notifyDataSetChanged()
+        }
+
+        holder.binding.btm.setOnClickListener {
+            POZYCJA = holder.binding.id.text.toString()
+            holder.binding.btm.setBackgroundColor(255)
         }
 
     }

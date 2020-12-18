@@ -18,7 +18,7 @@
     <string name="addProduct">com.example.shopassistantproject.ADD_PRODUCT</string>
     <string name="channelID">channelP</string>
     <string name="channelName">Channel Product</string>
-
+    <string name="modify">Modify</string>
 
 
 </resources>

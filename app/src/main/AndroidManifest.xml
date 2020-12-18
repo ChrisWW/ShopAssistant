@@ -14,7 +14,11 @@
         <receiver
             android:name=".ProductReceiver"
             android:enabled="true"
-            android:exported="false"></receiver>
+            android:exported="true">
+<intent-filter>
+    <action android:name="@string/addProduct"/>
+</intent-filter>
+        </receiver>
 
         <activity
             android:name=".ProductListActivity"

@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import com.example.shopassistantproject.databinding.ActivityMainBinding
 import com.example.shopassistantproject.databinding.ActivityOptionsBinding
 import com.example.shopassistantproject.databinding.ActivityProductListBinding
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_options.*
 
 
@@ -37,6 +38,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
+
         val binding2 = ActivityOptionsBinding.inflate(layoutInflater)
 
 
@@ -70,6 +72,9 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-
+      /* override fun onStop() {
+            super.onStop()
+            FirebaseAuth.getInstance().signOut();
+        } */
 
 }

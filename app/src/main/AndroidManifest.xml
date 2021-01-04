@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.shopassistantproject">
+    package="com.example.shopassistantproject" >
+
+
+    <uses-permission android:name="com.example.application.MY_PERMISSION" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -10,23 +14,28 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ShopAssistantProject"
-        tools:ignore="ExtraText">
+        tools:ignore="ExtraText" >
+
+
+        <activity android:name=".MainActivity" />
         <receiver
             android:name=".ProductReceiver"
             android:enabled="true"
-            android:exported="true">
-<intent-filter>
-    <action android:name="@string/addProduct"/>
-</intent-filter>
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="@string/addProduct" />
+            </intent-filter>
         </receiver>
 
         <activity
             android:name=".ProductListActivity"
+            android:enabled="true"
+            android:exported="true"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".OptionsActivity"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".LoginActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

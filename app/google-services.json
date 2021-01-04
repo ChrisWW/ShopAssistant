@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "261220309234",
+    "project_id": "shopassistantproject",
+    "storage_bucket": "shopassistantproject.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:261220309234:android:91214c03d93662805c586b",
+        "android_client_info": {
+          "package_name": "com.example.shopassistantproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "261220309234-4o58dpvu7pm4nni94o4uiteuiedfoobt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1r-oPtBrya753s2pnIIS1V6J9lZce2Uo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "261220309234-4o58dpvu7pm4nni94o4uiteuiedfoobt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

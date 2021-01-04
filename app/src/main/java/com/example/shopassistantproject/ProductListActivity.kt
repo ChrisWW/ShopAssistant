@@ -2,6 +2,7 @@ package com.example.shopassistantproject
 
 import android.content.ComponentName
 import android.content.Intent
+import android.content.IntentFilter
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -55,10 +56,14 @@ class ProductListActivity : AppCompatActivity() {
 
             )
             )
-            val broadcast = Intent(getString(R.string.addProduct))
-            // broadcast.component = ComponentName(this, ProductReceiver::class.java)
-            broadcast.component = ComponentName("com.example.secondapplictionshop", "com.example.secondapplictionshop.ProductReceiver")
-            broadcast.putExtra("produkt", binding.edl1.text.toString())
+
+            val broadcast = Intent()
+            broadcast.action = getString(R.string.addProduct)
+            // broadcast.component = ComponentName("com.example.projekt2", "com.example.projekt2.MainActivity")
+            // w przypadku drugiej aplikacji aby sie odnieść należy zrobić to tak
+            broadcast.component = ComponentName(this, ProductReceiver::class.java)
+            broadcast.putExtra("Productname", edl1.text.toString())
+            broadcast.addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES)
             sendBroadcast(broadcast)
         }
         binding.btl2.setOnClickListener {

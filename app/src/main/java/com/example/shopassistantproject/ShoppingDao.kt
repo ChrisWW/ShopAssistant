@@ -3,7 +3,7 @@ package com.example.shopassistantproject
 import androidx.lifecycle.LiveData
 import androidx.room.*
 
-@Dao
+/*@Dao
 interface ShoppingDao {
 
     @Query("SELECT * FROM shopping")
@@ -21,4 +21,4 @@ interface ShoppingDao {
     @Query("DELETE FROM shopping")
     fun removeAll()
     
-}
+} */

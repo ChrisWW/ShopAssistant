@@ -1,11 +1,13 @@
 package com.example.shopassistantproject
 
+import android.provider.ContactsContract
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shopassistantproject.databinding.ListElementBinding
+import com.google.firebase.database.DatabaseReference
 
-class MyAdapter(val viewModel: ShoppingViewModel) : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
+class MyAdapter(var viewModel: ShoppingViewModel) : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
 
     public var POZYCJA: String = ""
 
@@ -33,11 +35,13 @@ class MyAdapter(val viewModel: ShoppingViewModel) : RecyclerView.Adapter<MyAdapt
             viewModel.remove(shoppingList[position])
             notifyDataSetChanged()
         }
+
         holder.binding.tvCb.setOnClickListener {
             // Change it what is in the base, actually, click, unclicked
             shoppingList[position].bought = holder.binding.tvCb.isChecked
             viewModel.modify(shoppingList[position])
             notifyDataSetChanged()
+
         }
 
         holder.binding.btm.setOnClickListener {
@@ -47,7 +51,7 @@ class MyAdapter(val viewModel: ShoppingViewModel) : RecyclerView.Adapter<MyAdapt
 
     }
 
-    override fun getItemCount(): Int = shoppingList.size
+   override fun getItemCount(): Int = shoppingList.size
 
     fun setShoppingList(list: List<Shopping>){
         shoppingList = list
@@ -56,6 +60,5 @@ class MyAdapter(val viewModel: ShoppingViewModel) : RecyclerView.Adapter<MyAdapt
         notifyDataSetChanged()
 
     }
-
-
 }
+

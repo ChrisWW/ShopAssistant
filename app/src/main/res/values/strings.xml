@@ -19,6 +19,7 @@
     <string name="channelID">channelP</string>
     <string name="channelName">Channel Product</string>
     <string name="modify">Modify</string>
+    <string name="title_activity_maps">Map</string>
 
 
 </resources>

@@ -33,6 +33,10 @@ class MainActivity : AppCompatActivity() {
             val intent2 = Intent(this, ProductListActivity::class.java)
             startActivity(intent2)
         }
+        binding.btMap.setOnClickListener {
+            val intent3 = Intent(this, MapsActivity::class.java)
+            startActivity(intent3)
+        }
     }
 //
 

@@ -4,10 +4,8 @@ import android.Manifest
 import android.app.PendingIntent
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.telephony.ServiceState
 import android.util.Log
 import androidx.core.app.ActivityCompat
 import com.google.android.gms.location.Geofence
@@ -54,6 +52,17 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                         .title(et_place.text.toString())
                     mMap.addMarker(marker)
                     mMap.moveCamera(CameraUpdateFactory.newLatLng(latlng))
+//
+//                    val viewModelMaps = MapsViewModel(application)
+//                    viewModelMaps.add(
+//                            Maps(id = viewModelMaps.getItemCount(),
+//                                    name = et_place.text.toString(),
+//                                    description = et_description.text.toString(),
+//                                    radius = et_radius.text.toString(),
+//                                    location = LatLng(it.latitude, it.longitude).toString()
+//
+//                            )
+//                    )
 
                     val geo = Geofence.Builder()
                             .setRequestId("Geo${id++}")
@@ -73,13 +82,29 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                             Intent(this, GeoReceiver::class.java),
                             PendingIntent.FLAG_UPDATE_CURRENT
                     )
+                    val viewModelMaps = MapsViewModel(application)
+                    viewModelMaps.add(
 
+                            //id = viewModelMaps.getItemCount()
+                            Maps(id = id.toLong(),
+                                    name = et_place.text.toString(),
+                                    description = et_description.text.toString(),
+                                    radius = et_radius.text.toString(),
+                                    location = LatLng(it.latitude, it.longitude).toString()
+
+                            )
+                    )
+// Czy powinienem tutaj dodac .addOnSuccesListener wykald 38:50
                     geoClient.addGeofences(geoRequest, geoPendingIntent)
                 }
+
+
         }
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
+
+        // Otrzymac polozenie gdzie sie znajdujemy
         mMap = googleMap
         val perms = arrayOf(
                 Manifest.permission.ACCESS_FINE_LOCATION,

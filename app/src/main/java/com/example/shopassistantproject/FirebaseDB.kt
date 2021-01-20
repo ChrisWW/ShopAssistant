@@ -16,7 +16,7 @@ class FirebaseDB : LiveData<List<Shopping>>() {
     public var fbItemCount:Long = 0
     private val firebaseDB2: FirebaseDatabase = FirebaseDatabase.getInstance()
     private val userID = FirebaseAuth.getInstance().uid
-    public val ref = firebaseDB2.getReference("user/"+userID.toString())
+    public val ref = firebaseDB2.getReference("user/"+userID+"/products/".toString())
 
     //val ordersRef = ref.child("orders").orderByChild("phonenumber").equalTo(product)
 

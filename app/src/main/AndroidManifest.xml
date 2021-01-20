@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.shopassistantproject">
-
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -10,8 +9,12 @@
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
     <uses-permission android:name="com.example.application.MY_PERMISSION" />
     <uses-permission android:name="android.permission.INTERNET" />
+
+
+
 
     <application
         android:allowBackup="true"
@@ -22,10 +25,12 @@
         android:theme="@style/Theme.ShopAssistantProject"
         android:usesCleartextTraffic="true"
         tools:ignore="ExtraText">
+        <activity android:name=".ShopsListActivity"></activity>
+
         <receiver
             android:name=".GeoReceiver"
             android:enabled="true"
-            android:exported="true"></receiver>
+            android:exported="true" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -34,9 +39,7 @@
              sign the APK for publishing.
              You can define the keys for the debug and release targets in src/debug/ and src/release/.
         -->
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key" />
+
 
         <activity android:name=".LoginActivity">
             <intent-filter>
@@ -67,7 +70,10 @@
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps"
-            android:parentActivityName=".MainActivity"></activity>
+            android:parentActivityName=".MainActivity" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
     </application>
 
 </manifest>

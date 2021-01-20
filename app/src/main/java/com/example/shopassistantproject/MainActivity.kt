@@ -37,6 +37,10 @@ class MainActivity : AppCompatActivity() {
             val intent3 = Intent(this, MapsActivity::class.java)
             startActivity(intent3)
         }
+        binding.btShop.setOnClickListener {
+            val intent4 = Intent(this, ShopsListActivity::class.java)
+            startActivity(intent4)
+        }
     }
 //
 

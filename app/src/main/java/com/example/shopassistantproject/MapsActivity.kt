@@ -2,6 +2,7 @@ package com.example.shopassistantproject
 
 import android.Manifest
 import android.app.PendingIntent
+import android.content.ComponentName
 import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
@@ -47,6 +48,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 .addOnSuccessListener {
                     Log.i("location", "Location: ${it.latitude}, ${it.longitude}")
                     val latlng = LatLng(it.latitude, it.longitude)
+
                     val marker = MarkerOptions()
                         .position(latlng)
                         .title(et_place.text.toString())
@@ -63,13 +65,16 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 //
 //                            )
 //                    )
-
+                    val radius = 100F
                     val geo = Geofence.Builder()
                             .setRequestId("Geo${id++}")
-                            .setCircularRegion(it.latitude, it.longitude, 100F)
+                            .setCircularRegion(it.latitude, it.longitude, radius)
                             .setTransitionTypes(Geofence.GEOFENCE_TRANSITION_ENTER)
                             .setExpirationDuration(Geofence.NEVER_EXPIRE)
                             .build()
+
+
+
 
                     val geoRequest = GeofencingRequest.Builder()
                             .setInitialTrigger(GeofencingRequest.INITIAL_TRIGGER_ENTER)
@@ -82,6 +87,16 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                             Intent(this, GeoReceiver::class.java),
                             PendingIntent.FLAG_UPDATE_CURRENT
                     )
+
+                    val broadcast = Intent()
+                    broadcast.action = getString(R.string.addMaps)
+                    // broadcast.component = ComponentName("com.example.projekt2", "com.example.projekt2.MainActivity")
+                    // w przypadku drugiej aplikacji aby sie odnieść należy zrobić to tak
+                    broadcast.component = ComponentName(this, GeoReceiver::class.java)
+                    broadcast.putExtra("Geo ", id.toString())
+                    broadcast.addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES)
+                    sendBroadcast(broadcast)
+
                     val viewModelMaps = MapsViewModel(application)
                     viewModelMaps.add(
 
@@ -89,7 +104,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                             Maps(id = id.toLong(),
                                     name = et_place.text.toString(),
                                     description = et_description.text.toString(),
-                                    radius = et_radius.text.toString(),
+                                    radius = radius.toString(),
                                     location = LatLng(it.latitude, it.longitude).toString()
 
                             )
@@ -120,4 +135,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))*/
     }
+
+
 }

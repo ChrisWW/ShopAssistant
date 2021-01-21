@@ -6,23 +6,15 @@ import android.app.PendingIntent
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
-import com.google.android.gms.location.GeofencingEvent
 
-class GeoReceiver : BroadcastReceiver() {
+/*
+class MapsReceiver : BroadcastReceiver() {
 
     private var id = 0
-
     override fun onReceive(context: Context, intent: Intent) {
-        val event = GeofencingEvent.fromIntent(intent)
-        if(event.triggeringGeofences != null){
-
-        for(geo in event.triggeringGeofences) {
-            Toast.makeText(context, "Geofence with id: ${geo.requestId} triggered.", Toast.LENGTH_SHORT).show()
-
-        //if(intent.action == context.getString(R.string.addMaps)){
+        if(intent.action == context.getString(R.string.addMaps)){
             createChannel(context)
 
             val lista = Intent(context, MapsActivity::class.java)
@@ -34,24 +26,24 @@ class GeoReceiver : BroadcastReceiver() {
 
             )
 
-            val notification = NotificationCompat.Builder(context, context.getString(R.string.channelIG))
+            val notification = NotificationCompat.Builder(context, context.getString(R.string.channelID))
                     .setSmallIcon(R.mipmap.ic_launcher_round)
-                    .setContentTitle("You've entered to a shop")
+                    .setContentTitle("Enter to a shop:")
                     .setContentText(intent.getStringExtra("name"))
                     .setContentIntent(pendingIntent)
                     .setAutoCancel(true)
                     .build()
 
             NotificationManagerCompat.from(context).notify(id++, notification)
-             //}
+
         }
     }
-        }
+
     fun createChannel(context: Context){
 
         val channel = NotificationChannel(
-                context.getString(R.string.channelIG),
-                context.getString(R.string.channelNameMap),
+                context.getString(R.string.channelID),
+                context.getString(R.string.channelName),
                 NotificationManager.IMPORTANCE_DEFAULT
 
         )
@@ -60,3 +52,4 @@ class GeoReceiver : BroadcastReceiver() {
 
     }
 }
+*/

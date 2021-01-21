@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.shopassistantproject">
+
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -13,9 +14,6 @@
     <uses-permission android:name="com.example.application.MY_PERMISSION" />
     <uses-permission android:name="android.permission.INTERNET" />
 
-
-
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -25,12 +23,20 @@
         android:theme="@style/Theme.ShopAssistantProject"
         android:usesCleartextTraffic="true"
         tools:ignore="ExtraText">
-        <activity android:name=".ShopsListActivity"></activity>
+
+        <activity android:name=".ShopsListActivity" />
 
         <receiver
             android:name=".GeoReceiver"
             android:enabled="true"
-            android:exported="true" />
+            android:exported="false"><intent-filter>
+            <action android:name = "@string/addMaps"/>
+        </intent-filter>
+        </receiver>
+
+
+
+
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -39,8 +45,6 @@
              sign the APK for publishing.
              You can define the keys for the debug and release targets in src/debug/ and src/release/.
         -->
-
-
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -71,9 +75,10 @@
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps"
             android:parentActivityName=".MainActivity" />
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key" />
+            android:value="AIzaSyD94zUgZRMRk3LvwUep78mNc4A0lqXWNzM" />
     </application>
 
 </manifest>

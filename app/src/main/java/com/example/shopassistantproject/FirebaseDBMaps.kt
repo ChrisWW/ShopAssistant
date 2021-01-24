@@ -2,12 +2,17 @@ package com.example.shopassistantproject
 
 import android.util.Log
 import androidx.lifecycle.LiveData
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-
+import kotlinx.android.synthetic.main.activity_maps.*
+public lateinit var mMap: GoogleMap
 class FirebaseDBMaps : LiveData<List<Maps>>() {
 
     public var fbItemCountMaps:Long = 0
@@ -28,7 +33,7 @@ class FirebaseDBMaps : LiveData<List<Maps>>() {
     }
 
     fun getMaps(callbackmaps: CallbackMaps) {
-
+        //lateinit var mMap2: GoogleMap
         Log.v("Async101", "Start loading bookmarks")
         refMap.addValueEventListener(object : ValueEventListener {
 
@@ -41,14 +46,22 @@ class FirebaseDBMaps : LiveData<List<Maps>>() {
                             name = messageSnapshot.child("name").value as String,
                             description = messageSnapshot.child("description").value as String,
                             radius =  messageSnapshot.child("radius").value as String,
-                            location = messageSnapshot.child("location").value as String)
-
-
+                            latitude = messageSnapshot.child("latitude").value as Double,
+                            longitude = messageSnapshot.child("longitude").value as Double,
+                    )
 
                     lista.add(maps)
+                    val marker = MarkerOptions()
+                            .position(LatLng(maps.latitude, maps.longitude))
+                            .title(maps.name.toString())
+                    mMap.addMarker(marker)
+                    mMap.moveCamera(CameraUpdateFactory.newLatLng(LatLng(maps.latitude, maps.longitude)))
+
                 }
                 callbackmaps.getListaMaps(lista)
                 fbItemCountMaps = lista.size.toLong()
+                var id = 0
+                id = dataSnapshot.children.count()
             }
 
             override fun onCancelled(error: DatabaseError) {

@@ -26,7 +26,8 @@ class MyAdapterMaps(var viewModelMaps: MapsViewModel) : RecyclerView.Adapter<MyA
         holder.binding.nameMap.text = mapsList[position].name
         holder.binding.descriptionMap.text = mapsList[position].description
         holder.binding.radiusMap.text = mapsList[position].radius
-        holder.binding.locationMap.text = mapsList[position].location
+        holder.binding.locationMap.text = mapsList[position].latitude.toString()
+        holder.binding.location2Map.text = mapsList[position].longitude.toString()
         holder.binding.root.setOnClickListener {
             viewModelMaps.remove(mapsList[position])
             notifyDataSetChanged()

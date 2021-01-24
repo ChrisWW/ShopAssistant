@@ -23,6 +23,7 @@
     <string name="channelNameMap">Channel Map</string>
     <string name="modify">Modify</string>
     <string name="title_activity_maps">Map</string>
+    <string name="shop">et_place.text.toString()</string>
 
 
 </resources>

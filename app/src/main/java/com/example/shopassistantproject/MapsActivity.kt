@@ -23,7 +23,7 @@ import kotlinx.android.synthetic.main.activity_maps.*
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
-    private lateinit var mMap: GoogleMap
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,25 +55,14 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                     mMap.addMarker(marker)
                     mMap.moveCamera(CameraUpdateFactory.newLatLng(latlng))
 //
-//                    val viewModelMaps = MapsViewModel(application)
-//                    viewModelMaps.add(
-//                            Maps(id = viewModelMaps.getItemCount(),
-//                                    name = et_place.text.toString(),
-//                                    description = et_description.text.toString(),
-//                                    radius = et_radius.text.toString(),
-//                                    location = LatLng(it.latitude, it.longitude).toString()
-//
-//                            )
-//                    )
-                    val radius = 100F
+
+                    val radius = et_radius.text.toString()
                     val geo = Geofence.Builder()
                             .setRequestId("Geo${id++}")
-                            .setCircularRegion(it.latitude, it.longitude, radius)
-                            .setTransitionTypes(Geofence.GEOFENCE_TRANSITION_ENTER)
+                            .setCircularRegion(it.latitude, it.longitude, radius.toFloat())
+                            .setTransitionTypes(Geofence.GEOFENCE_TRANSITION_ENTER or Geofence.GEOFENCE_TRANSITION_EXIT)
                             .setExpirationDuration(Geofence.NEVER_EXPIRE)
                             .build()
-
-
 
 
                     val geoRequest = GeofencingRequest.Builder()
@@ -88,14 +77,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                             PendingIntent.FLAG_UPDATE_CURRENT
                     )
 
-                    val broadcast = Intent()
-                    broadcast.action = getString(R.string.addMaps)
-                    // broadcast.component = ComponentName("com.example.projekt2", "com.example.projekt2.MainActivity")
-                    // w przypadku drugiej aplikacji aby sie odnieść należy zrobić to tak
-                    broadcast.component = ComponentName(this, GeoReceiver::class.java)
-                    broadcast.putExtra("Geo ", id.toString())
-                    broadcast.addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES)
-                    sendBroadcast(broadcast)
+
 
                     val viewModelMaps = MapsViewModel(application)
                     viewModelMaps.add(
@@ -105,14 +87,23 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                                     name = et_place.text.toString(),
                                     description = et_description.text.toString(),
                                     radius = radius.toString(),
-                                    location = LatLng(it.latitude, it.longitude).toString()
+                                    latitude = it.latitude,
+                                    longitude = it.longitude
 
                             )
                     )
-// Czy powinienem tutaj dodac .addOnSuccesListener wykald 38:50
-                    geoClient.addGeofences(geoRequest, geoPendingIntent)
-                }
 
+
+                    geoClient.addGeofences(geoRequest, geoPendingIntent)
+
+
+                }
+            val broadcast = Intent()
+            broadcast.action = getString(R.string.addMaps)
+            broadcast.component = ComponentName(this, GeoReceiver::class.java)
+            broadcast.putExtra("shop", et_place.text.toString())
+            broadcast.addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES)
+            sendBroadcast(broadcast)
 
         }
     }
